@@ -662,7 +662,7 @@ OMEGA_H_DLL Mesh read_mesh_file(filesystem::path const& path, CommPtr comm) {
 #ifdef OMEGA_H_USE_SEACASEXODUS
     Mesh mesh(comm->library());
     auto file = exodus::open(path);
-    exodus::read_mesh(file, &mesh);
+    exodus::read_mesh(file, &mesh, true);
     mesh.set_comm(comm);
     exodus::close(file);
     return mesh;

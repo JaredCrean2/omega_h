@@ -531,6 +531,10 @@ if(Omega_h_USE_STK)
   set(Omega_h_HEADERS ${Omega_h_HEADERS} Omega_h_stk.hpp)
 endif()
 
+if(Omega_h_USE_EGADS)
+  set(Omega_h_HEADERS ${Omega_h_HEADERS} Omega_h_egads.hpp)
+endif()
+
 install(FILES ${Omega_h_HEADERS} DESTINATION include)
 
 if (Omega_h_USE_pybind11)

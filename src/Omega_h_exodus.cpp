@@ -57,7 +57,7 @@ static void get_elem_type_info(
   } else if (type == "tetra4") {
     *p_dim = 3;
     *p_family = OMEGA_H_SIMPLEX;
-  } else if (type == "TETRA") {
+  } else if (type == "TETRA" || type == "TET" || type == "tet") {
     *p_dim = 3;
     *p_family = OMEGA_H_SIMPLEX;
   } else if (type == "TET4") {
