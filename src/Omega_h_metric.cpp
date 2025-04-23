@@ -207,6 +207,12 @@ Reals limit_metric_gradation(
   do {
     values = values2;
     values2 = limit_gradation_once(mesh, values, max_rate);
+    Real max_diff = 0.0;
+    for (LO i=0; i < values.size(); ++i)
+      max_diff = std::max(max_diff, std::abs(values[i] - values2[i]));
+    
+    std::cout << "max_diff = " << max_diff << std::endl;
+    std::cout << "tol = " << tol << std::endl;
     ++i;
     if (verbose && can_print(mesh) && i > 0 && i % 50 == 0) {
       std::cout << "warning: gradation limiting is up to step " << i << '\n';

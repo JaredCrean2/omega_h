@@ -92,8 +92,7 @@ struct Egads {
 Egads* egads_load(std::string const& filename) {
   auto eg = new Egads;
   CALL(EG_open(&eg->context));
-  CALL(EG_loadModel(eg->context, 4 /*0*/, filename.c_str(), &eg->model));
-  CALL(EG_saveModel(eg->model, "model_loaded.step"));  //TODO: DEBUGGING
+  CALL(EG_loadModel(eg->context, 0, filename.c_str(), &eg->model));
   ego model_geom;
   int model_oclass;
   int model_mtype;
@@ -183,7 +182,6 @@ void egads_reclassify(Mesh* mesh, Egads* eg) {
     auto ents2faces = mesh->ask_up(dim, FACE);
     auto adj_class_dims = read(unmap(ents2faces.ab2b, face_class_dims, 1));
     auto keep_edges = each_eq_to(adj_class_dims, I8(2));
-    //auto ents2eq_faces = filter_graph(ents2faces, keep_edges);
     auto ents2eq_faces = filter_graph_edges(ents2faces, keep_edges);
     auto adj_eq_face_ids = unmap(ents2eq_faces.ab2b, face_class_ids, 1);
     auto host_a2ab = HostRead<LO>(ents2eq_faces.a2ab);
